@@ -1,0 +1,32 @@
+form{
+    padding: 60px 20px 40px;
+}
+.nav-form{
+    display: flex;
+    flex-direction: column;
+    padding: 20px 20px;
+    color: #c8c8c8;
+}
+.nav-formBtn{
+    display: block;
+    width: 90%;
+    padding: 15px;
+    border-radius: 4px;
+    border: none;
+    background-color: #002f34;
+    color: #fff;
+    cursor: pointer;
+    font-size: 15px;
+    margin: 60px auto;
+}
+.nav-formBtn:hover{
+    box-shadow:  0 0 4px 0 black;
+}
+.error_box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.error_box p {
+    margin-left: 10px;
+}

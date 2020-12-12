@@ -1,0 +1,54 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+}
+
+.login_form {
+    box-shadow: 0 0 6px 0 black;
+    width: 400px;
+    margin: 0 auto;
+}
+.login_formButtons{
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+.login_formButtons button {
+    font-size: 15px;
+    background: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    padding: 20px 70px;
+}
+
+.active_firstButton{
+    color: black;
+    font-weight: bold;
+}
+.active_secondButton{
+    color: black;
+    font-weight: bold;
+}
+
+.active_firstButton::after {
+    position: absolute;
+    content: "";
+    border: 2px solid black;
+    width: 50%;
+    top: 100%;
+    left: 0;
+}
+.active_secondButton::after {
+    position: absolute;
+    content: "";
+    border: 2px solid black;
+    width: 50%;
+    top: 100%;
+    right: 0;
+}
+
+
