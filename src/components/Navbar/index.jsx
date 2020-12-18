@@ -4,13 +4,10 @@ import Logo from "../../images/OLX-Logo.png"
 import "./Navbar.css"
 import userIcon from "../../images/userIcon.png"
 import { connect } from "react-redux"
-import ExitToAppIcon from "@material-ui/icons/ExitToApp"
+import Button from "@material-ui/core/Button"
+import DropDown from "./DropDown"
 
-const Navbar = ({ dispatch, authStatus }) => {
-  const handleQuit = () => {
-    localStorage.removeItem("authToken")
-    dispatch({ type: "login/quit" })
-  }
+const Navbar = ({ isLoggedIn }) => {
   return (
     <header className="header">
       <div className="container">
@@ -22,22 +19,19 @@ const Navbar = ({ dispatch, authStatus }) => {
           </div>
           <ul className="nav-login">
             <li>
-              {authStatus ? (
-                <button onClick={handleQuit}>
-                  <ExitToAppIcon />
-                </button>
-              ) : null}
-            </li>
-            <li>
               <img src={userIcon} alt="user"></img>
             </li>
             <li>
-              <Link to="/loginform/login">
-                <button>Мой профиль</button>
-              </Link>
+              {isLoggedIn ? (
+                <DropDown />
+              ) : (
+                <Link to="/loginform/login">
+                  <Button>Мой профиль</Button>
+                </Link>
+              )}
             </li>
             <li className="nav-button">
-              {authStatus === "resolved" ? (
+              {isLoggedIn ? (
                 <button> Подать обьявление</button>
               ) : (
                 <Link to="/loginform/login">
@@ -53,7 +47,7 @@ const Navbar = ({ dispatch, authStatus }) => {
 }
 
 const mapStateToProps = (state) => ({
-  authStatus: state.auth.isLoggedIn,
+  isLoggedIn: state.auth.isLoggedIn,
 })
 
 export default connect(mapStateToProps)(Navbar)

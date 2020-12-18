@@ -11,7 +11,17 @@ body {
 p, button{
   font-family: "Roboto", sans-serif;
 }
-
+a{
+  font-family: "Roboto", sans-serif;
+  text-decoration: none;
+  color: inherit;
+}
+a:hover {
+  font-weight: bold;
+}
+main{
+  background-color: #f2f4f5;
+}
 .App{
   display: flex;
   flex-direction: column;

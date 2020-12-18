@@ -1,0 +1,44 @@
+.post-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 1400px;
+  margin: 100px auto;
+  padding: 40px;
+}
+
+.post-img{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 50px;
+  background-color: #fff;
+}
+.post-img img {
+  width: 30%;
+  height: 400px;
+  margin: 0 20px;
+}
+
+.post-phones {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.post-phones a {
+  margin: 0 20px;
+}
+.post-content{
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: #fff;
+  width: 500px;
+}
+.post-content h2{
+  color: #002f34;
+  font-size: 35px;
+}
+.post-content h3{
+  color: #002f34;
+  font-size: 25px;
+}

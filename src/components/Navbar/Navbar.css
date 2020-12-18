@@ -1,15 +1,14 @@
-.header{
+.header {
     position: relative;
     background-color: #002f34;
 }
-.navbar{
+.navbar {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 15px 0;
 }
-
-.nav-logo img{
+.nav-logo img {
     width: 80px;
 }
 .nav-login {
@@ -20,12 +19,10 @@
     margin: 0;
     padding: 0;
 }
-
 .nav-login img {
     width: 20px;
     height: 20px;
 }
-
 .nav-login button {
     background: none;
     outline: none;
@@ -34,11 +31,10 @@
     cursor: pointer;
     font-size: 15px;
 }
-
 .nav-button button {
     color: #002f34;
     padding: 15px 10px;
-    background-color:#fff;
+    background-color: #fff;
     border-radius: 5px;
     margin-left: 10px;
 }

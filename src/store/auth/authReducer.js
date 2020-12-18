@@ -9,7 +9,7 @@ const authReducer = (state = initialState, action) => {
     case "login/pending":
       return {
         ...state,
-        isLoggdIn: false,
+        isLoggedIn: false,
         status: "pending",
       }
     case "login/resolved":
@@ -24,8 +24,6 @@ const authReducer = (state = initialState, action) => {
         isLoggedIn: false,
         status: "rejected",
       }
-    case "login/quit":
-      return { ...state, isLoggedIn: false }
     default:
       return state
   }

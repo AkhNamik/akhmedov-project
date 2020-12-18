@@ -1,27 +1,33 @@
-// import { gql } from "graphql-request"
-// import API from "../../API"
-
-// const adCreator = gql`
-//   query auth($login: String!, $password: String!) {
-//     login(login: $login, password: $password)
-//   }
-// `
-
-// export const login = (values) => async (dispatch) => {
-//   try {
-//     console.log("СЮДА ЗАХОДИТ")
-//     dispatch({ type: "login/pending" })
-//     const { login } = await API.request(loginQuery, values)
-
-//     if (login !== null) {
-//       dispatch({ type: "login/resolved" })
-//       localStorage.setItem("authToken", login)
-//       API.setHeader("Authorization", `Bearer ${login}`)
-//     } else{
-//       dispatch({ type: "login/rejected"})
-//     }
-    
-//   } catch (error) {
-//     dispatch({ type: "login/rejected"})
-//   }
-// }
+import { gql } from "../../API"
+import { ENDPOINT_GRAPHQL } from "../../API"
+const adQuery = `
+  query goods {
+    AdFind(query: "[{}, {\\"sort\\":[{\\"_id\\":-1}]}]") {
+      _id
+      title
+      owner {
+        _id
+        login
+        nick
+        phones
+      }
+      images {
+        _id,
+        url
+      }
+      createdAt
+     
+      description  
+    }
+  }
+`
+export const adDataFetched = () => async (dispatch) => {
+  try {
+    dispatch({ type: "data/pending" })
+    await gql(ENDPOINT_GRAPHQL, adQuery).then((res) =>
+    dispatch({ type: "data/resolved", payload: res.data.AdFind })
+    )
+  } catch (error) {
+    dispatch({ type: "data/error" })
+  }
+}

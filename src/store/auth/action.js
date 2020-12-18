@@ -9,14 +9,12 @@ const loginQuery = gql`
 
 export const login = (values) => async (dispatch) => {
   try {
-    console.log("СЮДА ЗАХОДИТ")
     dispatch({ type: "login/pending" })
     const { login } = await API.request(loginQuery, values)
-
     if (login !== null) {
-      dispatch({ type: "login/resolved" })
       localStorage.setItem("authToken", login)
       API.setHeader("Authorization", `Bearer ${login}`)
+      dispatch({ type: "login/resolved" })
     } else{
       dispatch({ type: "login/rejected"})
     }

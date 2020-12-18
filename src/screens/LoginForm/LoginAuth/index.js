@@ -3,10 +3,9 @@ import { Redirect } from "react-router-dom"
 import { connect } from "react-redux"
 import { login } from "../../../store/auth/action"
 import "./Login.css"
-import { CircularProgress, Input} from "@material-ui/core"
-import ErrorIcon from '@material-ui/icons/Error';
-
-const LoginAuth = ({ dispatch, isLoggedIn, authStatus}) => {
+import { CircularProgress, Input } from "@material-ui/core"
+import ErrorIcon from "@material-ui/icons/Error"
+const LoginAuth = ({ dispatch, isLoggedIn, authStatus }) => {
   const [values, setValues] = React.useState({})
   const onSubmit = (e) => {
     e.preventDefault()
@@ -24,10 +23,10 @@ const LoginAuth = ({ dispatch, isLoggedIn, authStatus}) => {
   }
   const Error = () => {
     return (
-        <div className="error_box">
-          <ErrorIcon /> 
-          <p>Не правильный логин или пароль</p>
-        </div>
+      <>
+        <ErrorIcon />
+        <p>Не правильный логин или пароль</p>
+      </>
     )
   }
   return (
@@ -51,8 +50,10 @@ const LoginAuth = ({ dispatch, isLoggedIn, authStatus}) => {
       <button type="submit" className="nav-formBtn">
         Войти
       </button>
-      {authStatus === "pending" ? <CircularProgress /> : null}
-      {authStatus === "rejected" ? Error() : null }
+      <div className="error_box">
+        {authStatus === "pending" ? <CircularProgress /> : null}
+        {authStatus === "rejected" ? Error() : null}
+      </div>
     </form>
   )
 }
