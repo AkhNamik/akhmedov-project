@@ -22,8 +22,8 @@ const PostInfo = ({ data, match }) => {
   return (
     <div className="post-container">
       <div className="post-img">
-        {urlImg !== null ? urlImg.map((item) => {
-          return item !== null && <img src={`${ENDPOINT}/${item}`} />
+        {urlImg !== null ? urlImg.map((item, index) => {
+          return item !== null && <img src={`${ENDPOINT}/${item}`} key={index} />
         }) : null}
         {images === null && <img src={icon} /> } 
       </div>
@@ -35,8 +35,8 @@ const PostInfo = ({ data, match }) => {
         <div className="post-phones">
           <p>{owner.nick || "Без имени"}</p>
           {owner.phones !== null ? (
-            owner.phones.map((item) => {
-              return <a href="#"> {item}</a>
+            owner.phones.map((item,index) => {
+            return <a href="#" key={index}> {item}</a>
             })
           ) : (
             <p>нет контактов</p>

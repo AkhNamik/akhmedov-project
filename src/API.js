@@ -1,4 +1,6 @@
 import { GraphQLClient } from "graphql-request"
+ 
+
 
 export const ENDPOINT = "http://marketplace.asmer.fs.a-level.com.ua"
 
@@ -17,7 +19,7 @@ export const gql = (undefined, query = "", variables = {}) =>
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${localStorage.getItem("authToken")}`,
     },
     body: JSON.stringify({ query, variables }),
   }).then((res) => res.json())

@@ -1,21 +1,27 @@
 import { ENDPOINT_GRAPHQL, gql } from "../../API"
 const account = `
 query userOne ($query: String!){
-  UserFind(query: $query ) {
+  UserFindOne(query: $query ) {
       _id
     createdAt
+    avatar {
+      _id
+      url
+    }
     login
     nick
-    avatar
     phones
     addresses
   }
 }
 `
 
-export const fetchUser = (values) => async () => {
- const data = await gql(ENDPOINT_GRAPHQL, account, {
-    query: JSON.stringify([{ login: values.login  }]),
-  }).then(res=>res)
-  console.log(data, 'data')
+export const fetchUser = (id) => async (dispatch) => {
+  try {
+    await gql(ENDPOINT_GRAPHQL, account, {
+      query: JSON.stringify([{ _id: id }]),
+    }).then((data) => dispatch({ type: "user/resolved", payload: data.data.UserFindOne }))
+  } catch (error) {
+    console.error(error)
+  }
 }

@@ -3,6 +3,7 @@ import { token } from "../../API"
 const initialState = {
   isLoggedIn: !!(token !== null),
   status: "idle",
+  account: {}
 }
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -23,6 +24,11 @@ const authReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: false,
         status: "rejected",
+      }
+    case "user/resolved":
+      return {
+        ...state,
+        account: action.payload
       }
     default:
       return state

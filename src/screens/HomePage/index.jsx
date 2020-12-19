@@ -5,17 +5,19 @@ import Posts from "./Posts/index"
 import { adDataFetched } from "../../store/adCreator/action"
 import { CircularProgress } from "@material-ui/core"
 
-const HomePage = ({ adData, dispatch, dataStatus }) => {
+const HomePage = ({ adData, dispatch, dataStatus, isLoggedIn }) => {
   React.useEffect(() => {
-    dispatch(adDataFetched())
+    if(isLoggedIn){
+      dispatch(adDataFetched())
+    }
   }, [])
 
   return (
     <div className="container">
       <div className="main-container">
         {dataStatus === "resolved"
-          ? adData.map((item) => {
-              return <Posts {...item} />
+          ? adData.map((item, index) => {
+              return <Posts {...item} key={index} />
             })
           : null}
         <div className="main-boxEror">
@@ -27,6 +29,7 @@ const HomePage = ({ adData, dispatch, dataStatus }) => {
 }
 
 const mapStateToProps = (state) => ({
+  isLoggedIn: state.auth.isLoggedIn,
   authStatus: state.auth.status,
   adData: state.adCreator.data,
   dataStatus: state.adCreator.status,
