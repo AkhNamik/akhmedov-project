@@ -1,46 +1,72 @@
 import { Button } from "@material-ui/core"
 import React from "react"
+import { connect } from "react-redux"
 import { ENDPOINT } from "../../API"
 import "./AdPost.css"
+import { fetchPost } from "./adPostFetch"
 
-const AdPost = () => {
+const AdPost = ({ dispatch }) => {
   const [values, setValues] = React.useState({})
-  const onSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
+      dispatch(fetchPost(values))
   }
-  const onChange = (e) => {
+  const handleFile = (e) => {
+    Promise.allSettled(
+      [...e.target.files].map((file) => {
+        const formData = new FormData()
+        formData.append("photo", file)
+        return fetch(`${ENDPOINT}/upload`, {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+          },
+          body: formData,
+        }).then((res) => res.json())
+      })
+    ).then((res) => {
+      console.log(res)
+      const images = res.reduce((acc, item) => {
+        if (item.status === "fulfilled")
+          return [
+            ...acc,
+            {
+              _id: item.value._id,
+              text: item.value.url,
+            },
+          ]
+        return acc
+      }, [])
+      setValues({
+        ...values,
+        images,
+      })
+    })
+  }
+  const handleChange = (e) => {
     const target = e.target
     setValues((prev) => ({
       ...prev,
       [target.name]: target.value,
     }))
   }
-  const onChangeAvatar = (e) => {
-    const formData = new FormData()
-    formData.append("photo", e.target.files[0])
-    fetch(`${ENDPOINT}/upload`, {
-      method: "POST",
-      headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
-      body: formData,
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        setValues({
-          avatar: {
-            _id: res._id,
-          },
-        })                                    
-      })
+  const handleChangePrice = (e) => {
+    const target = e.target
+    setValues((prev) => ({
+      ...prev,
+      [target.name]: +target.value,
+    }))
   }
+  console.log(values)
   return (
-    <form onSubmit={onSubmit} className="main-form">
+    <form onSubmit={handleSubmit} className="main-form">
       <div className="form-detail">
         <h3>Название:</h3>
-        <input onChange={onChange} type="text" name="title" />
+        <input onChange={handleChange} type="text" name="title" />
         <br />
         <h3>Описаниe:</h3>
         <textarea
-          onChange={onChange}
+          onChange={handleChange}
           type="text"
           rows="5"
           cols="50"
@@ -49,23 +75,29 @@ const AdPost = () => {
       </div>
       <div className="form-price">
         <h3>Цена:</h3>
-        <input type="number" name="price" onChange={onChange} />
+        <input type="number" name="price" onChange={handleChangePrice} />
       </div>
       <div className="form-photo">
         <h3>Загрузить фото:</h3>
-        <input onChange={onChangeAvatar} type="file" name="photo" id="photo" />
-        <input onChange={onChangeAvatar} type="file" name="photo" id="photo" />
-        <input onChange={onChangeAvatar} type="file" name="photo" id="photo" />
+        <input
+          onChange={handleFile}
+          type="file"
+          name="photo"
+          id="photo"
+          multiple
+        />
       </div>
       <div className="form-location">
         <h3>Адрес:</h3>
-        <input type="text" name="adrress" onChange={onChange} />
+        <input type="text" name="address" onChange={handleChange} />
       </div>
       <div className="form-button">
-        <Button variant="outlined">Добавить пост</Button>
+        <Button variant="outlined" type="submit">
+          Добавить пост
+        </Button>
       </div>
     </form>
   )
 }
 
-export default AdPost
+export default connect(null)(AdPost)

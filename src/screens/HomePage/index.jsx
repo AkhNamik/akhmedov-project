@@ -29,7 +29,6 @@ const HomePage = ({ adData, dispatch, dataStatus, isLoggedIn }) => {
 
 const mapStateToProps = (state) => ({
   isLoggedIn: state.auth.isLoggedIn,
-  authStatus: state.auth.status,
   adData: state.adCreator.data,
   dataStatus: state.adCreator.status,
 })

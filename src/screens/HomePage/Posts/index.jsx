@@ -31,6 +31,7 @@ const useStyles = makeStyles({
 
 const Posts = ({ title, images, _id, price }) => {
   const classes = useStyles()
+  console.log(images)
   const img = images
     ? images.map((item) => {
         if (item.url !== null) {

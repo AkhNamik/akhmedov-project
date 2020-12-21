@@ -7,7 +7,6 @@ import Typography from "@material-ui/core/Typography"
 import { makeStyles } from "@material-ui/core/styles"
 import { Avatar, Button, TextField } from "@material-ui/core"
 import { ENDPOINT } from "../../API"
-import DropDown from "../../components/Navbar/DropDown"
 const useStyles = makeStyles({
   root: {
     width: "50%",
@@ -92,7 +91,7 @@ const UserInfo = ({ isLoggedIn, dispatch, account }) => {
   }
   const onChangeAvatar = (e) => {
     const formData = new FormData()
-    formData.append("photo", e.target.files[0])
+    formData.append("photo", e.target.files[0]) 
     fetch(`${ENDPOINT}/upload`, {
       method: "POST",
       headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },
