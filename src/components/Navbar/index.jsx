@@ -32,7 +32,9 @@ const Navbar = ({ isLoggedIn }) => {
             </li>
             <li className="nav-button">
               {isLoggedIn ? (
-                <button> Подать обьявление</button>
+                <Link to="/adpost">
+                  <button> Подать обьявление</button>
+                </Link>
               ) : (
                 <Link to="/loginform/login">
                   <button> Подать обьявление</button>

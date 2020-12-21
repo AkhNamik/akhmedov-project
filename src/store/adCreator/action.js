@@ -16,7 +16,7 @@ const adQuery = `
         url
       }
       createdAt
-     
+      price
       description  
     }
   }

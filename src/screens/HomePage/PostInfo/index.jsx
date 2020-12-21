@@ -12,7 +12,7 @@ const PostInfo = ({ data, match }) => {
   const filterData = data.filter((item) => {
     return item._id === match.params.postId
   })
-  const { description, owner, images, title } = filterData[0]
+  const { description, owner, images, title, price } = filterData[0]
   var urlImg = null
   if (images !== null) {
     urlImg = images.map((item) => {
@@ -22,21 +22,31 @@ const PostInfo = ({ data, match }) => {
   return (
     <div className="post-container">
       <div className="post-img">
-        {urlImg !== null ? urlImg.map((item, index) => {
-          return item !== null && <img src={`${ENDPOINT}/${item}`} key={index} />
-        }) : null}
-        {images === null && <img src={icon} /> } 
+        {urlImg !== null
+          ? urlImg.map((item, index) => {
+              return (
+                item !== null && <img src={`${ENDPOINT}/${item}`} key={index} />
+              )
+            })
+          : null}
+        {images === null && <img src={icon} />}
       </div>
       <div className="post-content">
         <h2>{title}</h2>
+        <p>{price !== null ? price + " " + "грн." : "нет цены"}</p>
         <h3>Описание</h3>
         <p>{description}</p>
         <h3>Контакты</h3>
         <div className="post-phones">
           <p>{owner.nick || "Без имени"}</p>
           {owner.phones !== null ? (
-            owner.phones.map((item,index) => {
-            return <a href="#" key={index}> {item}</a>
+            owner.phones.map((item, index) => {
+              return (
+                <a href="#" key={index}>
+                  {" "}
+                  {item}
+                </a>
+              )
             })
           ) : (
             <p>нет контактов</p>

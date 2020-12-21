@@ -11,7 +11,6 @@ const HomePage = ({ adData, dispatch, dataStatus, isLoggedIn }) => {
       dispatch(adDataFetched())
     }
   }, [])
-
   return (
     <div className="container">
       <div className="main-container">

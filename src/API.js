@@ -1,6 +1,4 @@
 import { GraphQLClient } from "graphql-request"
- 
-
 
 export const ENDPOINT = "http://marketplace.asmer.fs.a-level.com.ua"
 

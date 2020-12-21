@@ -29,9 +29,8 @@ const useStyles = makeStyles({
   },
 })
 
-const Posts = ({ title, images, _id }) => {
+const Posts = ({ title, images, _id, price }) => {
   const classes = useStyles()
-
   const img = images
     ? images.map((item) => {
         if (item.url !== null) {
@@ -49,8 +48,11 @@ const Posts = ({ title, images, _id }) => {
         />
       </CardActionArea>
       <CardContent>
-        <Typography gutterBottom variant="h5" component="h2">
+        <Typography gutterBottom variant="h4" component="h2">
           {title}
+        </Typography>
+        <Typography gutterBottom variant="h5" component="p">
+          {price !== null ? price + " " + "грн." : "нет цены"} 
         </Typography>
       </CardContent>
       <CardActions>

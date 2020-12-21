@@ -6,6 +6,7 @@ import LoginForm from "./screens/LoginForm"
 import HomePage from "./screens/HomePage"
 import PostInfoWithRouter from "./screens/HomePage/PostInfo"
 import UserInfo from "./screens/User"
+import AdPost from "./screens/AdPost"
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
             <Route exact path="/" component={HomePage} />
             <Route path="/obyavlenie/:postId" component={PostInfoWithRouter} />
             <Route path="/account/:id?" component={UserInfo} />
+            <Route path="/adpost" component={AdPost}/>
           </Switch>
         </main>
         <Footer />

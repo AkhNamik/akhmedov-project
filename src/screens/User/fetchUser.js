@@ -25,3 +25,19 @@ export const fetchUser = (id) => async (dispatch) => {
     console.error(error)
   }
 }
+
+const mutationAccount = `
+mutation usAd ($input: UserInput!){
+  UserUpsert(user: $input){
+    _id
+  }
+}
+`
+
+export const postMutationUser = (isValue) => async () => {
+  try {
+    await gql(ENDPOINT_GRAPHQL, mutationAccount, {input: isValue})
+  } catch (error) {
+    console.error(error)
+  }
+}                             
