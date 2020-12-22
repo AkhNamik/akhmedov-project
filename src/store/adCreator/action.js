@@ -10,6 +10,10 @@ const adQuery = `
         login
         nick
         phones
+        avatar {
+          _id
+          url
+        }
       }
       images {
         _id,

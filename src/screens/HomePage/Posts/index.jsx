@@ -31,7 +31,6 @@ const useStyles = makeStyles({
 
 const Posts = ({ title, images, _id, price }) => {
   const classes = useStyles()
-  console.log(images)
   const img = images
     ? images.map((item) => {
         if (item.url !== null) {
@@ -41,13 +40,13 @@ const Posts = ({ title, images, _id, price }) => {
     : ""
   return (
     <Card className={classes.root}>
-      <CardActionArea className={classes.mainCart}>
+      <CardContent className={classes.mainCart}>
         <CardMedia
           className={classes.media}
           component="img"
           src={img[0] !== undefined ? ENDPOINT + "/" + img[0] : icon}
         />
-      </CardActionArea>
+      </CardContent>
       <CardContent>
         <Typography gutterBottom variant="h4" component="h2">
           {title}

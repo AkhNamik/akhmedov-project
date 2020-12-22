@@ -4,6 +4,8 @@ import { Redirect, withRouter } from "react-router-dom"
 import { ENDPOINT } from "../../../API"
 import "./PostInfo.css"
 import icon from "../../../images/iconNotPhoto.png"
+import { Avatar } from "@material-ui/core"
+import SliderImage from "../../../components/Slider"
 
 const PostInfo = ({ data, match }) => {
   if (data.length === 0) {
@@ -13,24 +15,16 @@ const PostInfo = ({ data, match }) => {
     return item._id === match.params.postId
   })
   const { description, owner, images, title, price } = filterData[0]
-  var urlImg = null
-  if (images !== null) {
-    urlImg = images.map((item) => {
-      return item.url
-    })
-  }
+  const { avatar } = owner
   return (
     <div className="post-container">
-      <div className="post-img">
-        {urlImg !== null
-          ? urlImg.map((item, index) => {
-              return (
-                item !== null && <img src={`${ENDPOINT}/${item}`} key={index} />
-              )
-            })
-          : null}
-        {images === null && <img src={icon} />}
-      </div>
+      {images !== null ? (
+        <SliderImage images={images} />
+      ) : (
+        <div className="post-img">
+          <img src={icon} />
+        </div>
+      )}
       <div className="post-content">
         <h2>{title}</h2>
         <p>{price !== null ? price + " " + "грн." : "нет цены"}</p>
@@ -38,7 +32,12 @@ const PostInfo = ({ data, match }) => {
         <p>{description}</p>
         <h3>Контакты</h3>
         <div className="post-phones">
-          <p>{owner.nick || "Без имени"}</p>
+          <div className="post-contact">
+            {avatar.url !== null && avatar.url !== undefined && (
+              <Avatar alt="UserIcon" src={`${ENDPOINT}/${avatar.url}`} />
+            )}
+            <p>{owner.nick || "Без имени"}</p>
+          </div>
           {owner.phones !== null ? (
             owner.phones.map((item, index) => {
               return (

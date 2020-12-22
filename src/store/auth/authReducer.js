@@ -30,7 +30,6 @@ const authReducer = (state = initialState, action) => {
         ...state,
         isLoggedIn: false,
       }
-
     case "user/resolved":
       return {
         ...state,

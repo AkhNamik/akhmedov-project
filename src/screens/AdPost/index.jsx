@@ -32,7 +32,6 @@ const AdPost = ({ dispatch }) => {
             ...acc,
             {
               _id: item.value._id,
-              text: item.value.url,
             },
           ]
         return acc
