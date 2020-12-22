@@ -25,7 +25,6 @@ const AdPost = ({ dispatch }) => {
         }).then((res) => res.json())
       })
     ).then((res) => {
-      console.log(res)
       const images = res.reduce((acc, item) => {
         if (item.status === "fulfilled")
           return [
@@ -56,7 +55,6 @@ const AdPost = ({ dispatch }) => {
       [target.name]: +target.value,
     }))
   }
-  console.log(values)
   return (
     <form onSubmit={handleSubmit} className="main-form">
       <div className="form-detail">
