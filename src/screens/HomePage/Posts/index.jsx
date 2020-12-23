@@ -2,7 +2,6 @@ import React from "react"
 import { ENDPOINT } from "../../../API"
 import { makeStyles } from "@material-ui/core/styles"
 import Card from "@material-ui/core/Card"
-import CardActionArea from "@material-ui/core/CardActionArea"
 import CardActions from "@material-ui/core/CardActions"
 import CardContent from "@material-ui/core/CardContent"
 import CardMedia from "@material-ui/core/CardMedia"
@@ -28,9 +27,7 @@ const useStyles = makeStyles({
     flexGrow: 1,
   },
 })
-
-const Posts = ({ title, images, _id, price }) => {
-
+const Posts = ({ title, images, _id, price, address }) => {
   const classes = useStyles()
   const img = images
     ? images.map((item) => {
@@ -40,31 +37,31 @@ const Posts = ({ title, images, _id, price }) => {
       })
     : ""
   return (
-      <Card className={classes.root}>
-        <CardContent className={classes.mainCart}>
-          <CardMedia
-            className={classes.media}
-            component="img"
-            src={img[0] !== undefined ? ENDPOINT + "/" + img[0] : icon}
-          />
-        </CardContent>
-        <CardContent>
-          <Typography gutterBottom variant="h4" component="h2">
-            {title}
-          </Typography>
-          <Typography gutterBottom variant="h5" component="p">
-            {price !== null ? price + " " + "грн." : "нет цены"}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Link to={`/obyavlenie/${_id}`}>
-            <Button size="small" color="primary">
-              Подробнее
-            </Button>
-          </Link>
-        </CardActions>
-      </Card>
+    <Card className={classes.root}>
+      <CardContent className={classes.mainCart}>
+        <CardMedia
+          className={classes.media}
+          component="img"
+          src={img[0] !== undefined ? ENDPOINT + "/" + img[0] : icon}
+        />
+      </CardContent>
+      <CardContent className={classes.mainCart}>
+        <p>{address}</p>
+        <Typography gutterBottom variant="h5" component="h2">
+          {title}
+        </Typography>
+        <Typography gutterBottom variant="h5" component="p">
+          {price !== null ? price + " " + "грн." : "нет цены"}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Link to={`/obyavlenie/${_id}`}>
+          <Button size="small" color="primary">
+            Подробнее
+          </Button>
+        </Link>
+      </CardActions>
+    </Card>
   )
 }
-
-export default Posts
+export default React.memo(Posts)

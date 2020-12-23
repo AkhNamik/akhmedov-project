@@ -6,7 +6,6 @@ import "./PostInfo.css"
 import icon from "../../../images/iconNotPhoto.png"
 import { Avatar } from "@material-ui/core"
 import SliderImage from "../../../components/Slider"
-
 const PostInfo = ({ data, match }) => {
   if (data.length === 0) {
     return <Redirect to="/" />
@@ -14,7 +13,7 @@ const PostInfo = ({ data, match }) => {
   const filterData = data.filter((item) => {
     return item._id === match.params.postId
   })
-  const { description, owner, images, title, price } = filterData[0]
+  const { description, owner, images, title, price, address } = filterData[0]
   const { avatar } = owner
   return (
     <div className="post-container">
@@ -28,6 +27,7 @@ const PostInfo = ({ data, match }) => {
       <div className="post-content">
         <h2>{title}</h2>
         <p>{price !== null ? price + " " + "грн." : "нет цены"}</p>
+        <p>{address !== null ? address : null}</p>
         <h3>Описание</h3>
         <p>{description}</p>
         <h3>Контакты</h3>
@@ -55,11 +55,8 @@ const PostInfo = ({ data, match }) => {
     </div>
   )
 }
-
 let PostInfoWithRouter = withRouter(PostInfo)
-
 const mapStateToProps = (state) => ({
   data: state.adCreator.data,
 })
-
 export default connect(mapStateToProps)(PostInfoWithRouter)

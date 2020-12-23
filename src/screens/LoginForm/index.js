@@ -1,11 +1,10 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link, Route } from "react-router-dom"
 import LoginAuth from "./LoginAuth/"
 import LoginRegistration from "./LoginRegistration/"
 import "./LoginForm.css"
-
 const LoginForm = () => {
-  const [isBtn, setIsBtn] = React.useState(true)
+  const [isBtn, setIsBtn] = useState(true)
   const handleChangeFirst = () => setIsBtn(true)
   const handleChangeFalse = () => setIsBtn(false)
   return (
@@ -40,5 +39,4 @@ const LoginForm = () => {
     </div>
   )
 }
-
-export default LoginForm
+export default React.memo(LoginForm)

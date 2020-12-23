@@ -1,15 +1,15 @@
 import { Button } from "@material-ui/core"
-import React from "react"
+import React, {useState} from "react"
 import { connect } from "react-redux"
 import { ENDPOINT } from "../../API"
 import "./AdPost.css"
 import { fetchPost } from "./adPostFetch"
 
-const AdPost = ({ dispatch }) => {
-  const [values, setValues] = React.useState({})
+const AdPost = ({ fetchPost }) => {
+  const [values, setValues] = useState({})
   const handleSubmit = (e) => {
     e.preventDefault()
-      dispatch(fetchPost(values))
+    fetchPost(values)
   }
   const handleFile = (e) => {
     Promise.allSettled(
@@ -96,5 +96,4 @@ const AdPost = ({ dispatch }) => {
     </form>
   )
 }
-
-export default connect(null)(AdPost)
+export default connect(null, { fetchPost })(AdPost)

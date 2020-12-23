@@ -5,8 +5,7 @@ import MenuItem from "@material-ui/core/MenuItem"
 import API from "../../../API"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
-
-const DropDown = ({ dispatch}) => {
+const DropDown = ({ dispatch }) => {
   const [anchorEl, setAnchorEl] = React.useState(null)
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget)
@@ -43,6 +42,4 @@ const DropDown = ({ dispatch}) => {
     </div>
   )
 }
-
-
 export default connect(null)(DropDown)

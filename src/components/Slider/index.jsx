@@ -4,7 +4,6 @@ import "slick-carousel/slick/slick-theme.css"
 import Slider from "react-slick"
 import { ENDPOINT } from "../../API"
 import "./Slider.css"
-
 const SliderImage = ({ images }) => {
   const settings = {
     dots: true,
@@ -14,7 +13,6 @@ const SliderImage = ({ images }) => {
     slidesToShow: 1,
     slidesToScroll: 1,
   }
-  console.log(images, "images")
   return (
     <div className="post-slider">
       <Slider {...settings}>
@@ -31,5 +29,4 @@ const SliderImage = ({ images }) => {
     </div>
   )
 }
-
-export default SliderImage
+export default React.memo(SliderImage)

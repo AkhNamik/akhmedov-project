@@ -1,15 +1,15 @@
-import React from "react"
+import React, { useState } from "react"
 import { Redirect } from "react-router-dom"
 import { connect } from "react-redux"
 import { login } from "../../../store/auth/action"
 import "./Login.css"
 import { CircularProgress, Input } from "@material-ui/core"
 import ErrorIcon from "@material-ui/icons/Error"
-const LoginAuth = ({ dispatch, isLoggedIn, authStatus }) => {
-  const [values, setValues] = React.useState({})
+const LoginAuth = ({ login, isLoggedIn, authStatus }) => {
+  const [values, setValues] = useState({})
   const onSubmit = (e) => {
     e.preventDefault()
-    dispatch(login(values))
+    login(values)
   }
   const onChange = (e) => {
     const target = e.target
@@ -62,4 +62,4 @@ const mapStateToProps = (state) => ({
   isLoggedIn: state.auth.isLoggedIn,
   authStatus: state.auth.status,
 })
-export default connect(mapStateToProps)(LoginAuth)
+export default connect(mapStateToProps, { login })(LoginAuth)

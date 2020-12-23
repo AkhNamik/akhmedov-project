@@ -4,13 +4,12 @@
     align-items: center;
     margin-top: 50px;
 }
-
 .login_form {
     box-shadow: 0 0 6px 0 black;
     width: 400px;
     margin: 100px auto;
 }
-.login_formButtons{
+.login_formButtons {
     border-bottom: 1px solid black;
     display: flex;
     justify-content: space-between;
@@ -24,16 +23,14 @@
     cursor: pointer;
     padding: 20px 70px;
 }
-
-.active_firstButton{
+.active_firstButton {
     color: black;
     font-weight: bold;
 }
-.active_secondButton{
+.active_secondButton {
     color: black;
     font-weight: bold;
 }
-
 .active_firstButton::after {
     position: absolute;
     content: "";
@@ -50,5 +47,3 @@
     top: 100%;
     right: 0;
 }
-
-

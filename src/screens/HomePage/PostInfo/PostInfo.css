@@ -6,8 +6,7 @@
   margin: 100px auto;
   padding: 40px;
 }
-
-.post-img{
+.post-img {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -20,7 +19,6 @@
   height: 400px;
   margin: 20px 20px;
 }
-
 .post-phones {
   display: flex;
   align-items: center;
@@ -29,17 +27,17 @@
 .post-phones a {
   margin: 0 20px;
 }
-.post-content{
+.post-content {
   padding: 10px 20px;
   margin-top: 50px;
   background-color: #fff;
   width: 500px;
 }
-.post-content h2{
+.post-content h2 {
   color: #002f34;
   font-size: 35px;
 }
-.post-content h3{
+.post-content h3 {
   color: #002f34;
   font-size: 25px;
 }

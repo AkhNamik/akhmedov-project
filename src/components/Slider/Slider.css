@@ -3,7 +3,7 @@
     background-color: #fff;
     padding: 100px;
 }
-.slick-slider{
+.slick-slider {
     width: 800px;
     margin: 0 auto;
 }
@@ -12,7 +12,7 @@
     height: 100%;
 }
 
-.slick-prev{
+.slick-prev {
     left: -90px;
     z-index: 10;
 }
@@ -20,7 +20,8 @@
     right: -90px;
     z-index: 10;
 }
-.slick-prev:before, .slick-next:before {
+.slick-prev:before,
+.slick-next:before {
     font-size: 40px;
     color: #002f34;
 }

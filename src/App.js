@@ -7,7 +7,7 @@ import HomePage from "./screens/HomePage"
 import PostInfoWithRouter from "./screens/HomePage/PostInfo"
 import UserInfo from "./screens/User"
 import AdPost from "./screens/AdPost"
-
+import { ACCOUNT, ADPOST, LOGIN_FORM, OBYAVLENIE } from "./types"
 const App = () => {
   return (
     <div className="App">
@@ -15,11 +15,11 @@ const App = () => {
         <Navbar />
         <main>
           <Switch>
-            <Route path="/loginform" component={LoginForm} />
+            <Route path={LOGIN_FORM} component={LoginForm} />
             <Route exact path="/" component={HomePage} />
-            <Route path="/obyavlenie/:postId" component={PostInfoWithRouter} />
-            <Route path="/account/:id?" component={UserInfo} />
-            <Route path="/adpost" component={AdPost}/>
+            <Route path={OBYAVLENIE} component={PostInfoWithRouter} />
+            <Route path={ACCOUNT} component={UserInfo} />
+            <Route path={ADPOST} component={AdPost} />
           </Switch>
         </main>
         <Footer />
@@ -27,5 +27,4 @@ const App = () => {
     </div>
   )
 }
-
 export default App

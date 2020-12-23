@@ -1,5 +1,4 @@
 import { token } from "../../API"
-
 const initialState = {
   isLoggedIn: !!(token !== null),
   status: "idle",
@@ -44,5 +43,4 @@ const authReducer = (state = initialState, action) => {
       return state
   }
 }
-
 export default authReducer

@@ -6,48 +6,44 @@
     text-align: start;
     border-radius: 0.7rem;
 }
-
-
-.form-detail, .form-location, 
-.form-photo, .form-price{
+.form-detail,
+.form-location,
+.form-photo,
+.form-price {
     border-bottom: 1px solid #cdd5d7;
 }
-
-.form-detail input{
+.form-detail input {
     padding: 10px 10px;
     border-radius: 0.2rem;
-    border: 2px solid rgba(0,47,52,.64);
+    border: 2px solid rgba(0, 47, 52, 0.64);
     width: 50%;
     margin: 10px 0;
 }
-
-.form-detail textarea{
+.form-detail textarea {
     resize: none;
     padding: 10px 10px;
     border-radius: 0.2rem;
-    border: 2px solid rgba(0,47,52,.64);
+    border: 2px solid rgba(0, 47, 52, 0.64);
     width: 50%;
     margin-top: 10px;
     font-size: 1rem;
     color: #002f34;
     font-family: sans-serif;
 }
-
-.form-price input{
+.form-price input {
     padding: 10px 10px;
     border-radius: 0.2rem;
-    border: 2px solid rgba(0,47,52,.64);
+    border: 2px solid rgba(0, 47, 52, 0.64);
     width: 50%;
     margin: 10px 0;
 }
-
-.form-location input{
+.form-location input {
     padding: 10px 10px;
     border-radius: 0.2rem;
-    border: 2px solid rgba(0,47,52,.64);
+    border: 2px solid rgba(0, 47, 52, 0.64);
     width: 50%;
     margin: 10px 0;
 }
-.form-button{
+.form-button {
     margin: 20px 40px;
 }

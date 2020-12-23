@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { connect } from "react-redux"
 import { fetchUser, postMutationUser } from "./fetchUser"
 import jwt_decode from "jwt-decode"
@@ -45,9 +45,9 @@ const useStyles = makeStyles({
   },
 })
 const UserInfo = ({ isLoggedIn, dispatch, account }) => {
-  const [values, setValues] = React.useState(null)
-  const [isValue, setIsValue] = React.useState({})
-  const [status, setStatus] = React.useState("idle")
+  const [values, setValues] = useState(null)
+  const [isValue, setIsValue] = useState({})
+  const [status, setStatus] = useState("idle")
   React.useEffect(() => {
     const decode = jwt_decode(localStorage.getItem("authToken"))
     const id = decode.sub.id
@@ -91,7 +91,7 @@ const UserInfo = ({ isLoggedIn, dispatch, account }) => {
   }
   const onChangeAvatar = (e) => {
     const formData = new FormData()
-    formData.append("photo", e.target.files[0]) 
+    formData.append("photo", e.target.files[0])
     fetch(`${ENDPOINT}/upload`, {
       method: "POST",
       headers: { Authorization: `Bearer ${localStorage.getItem("authToken")}` },

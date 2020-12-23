@@ -1,13 +1,13 @@
-form{
+form {
     padding: 60px 20px 40px;
 }
-.nav-form{
+.nav-form {
     display: flex;
     flex-direction: column;
     padding: 20px 20px;
     color: #c8c8c8;
 }
-.nav-formBtn{
+.nav-formBtn {
     display: block;
     width: 90%;
     padding: 15px;
@@ -19,10 +19,10 @@ form{
     font-size: 15px;
     margin: 60px auto;
 }
-.nav-formBtn:hover{
-    box-shadow:  0 0 4px 0 black;
+.nav-formBtn:hover {
+    box-shadow: 0 0 4px 0 black;
 }
-.error_box{
+.error_box {
     display: flex;
     justify-content: center;
     align-items: center;

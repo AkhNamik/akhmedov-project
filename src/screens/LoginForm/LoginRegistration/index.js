@@ -1,9 +1,8 @@
 import { Input } from "@material-ui/core"
 import { gql } from "graphql-request"
-import React from "react"
+import React, { useState } from "react"
 import API from "../../../API"
 import "../LoginAuth/Login.css"
-
 const createMutation = gql`
   mutation create($login: String!, $password: String!) {
     createUser(login: $login, password: $password) {
@@ -13,8 +12,8 @@ const createMutation = gql`
   }
 `
 const LoginRegistration = () => {
-  const [values, setValues] = React.useState({})
-  const [status, setStatus] = React.useState("")
+  const [values, setValues] = useState({})
+  const [status, setStatus] = useState("")
   const onSubmit = (e) => {
     e.preventDefault()
     const { login, password } = values
@@ -56,5 +55,4 @@ const LoginRegistration = () => {
   )
 }
 
-
-export default LoginRegistration
+export default React.memo(LoginRegistration)
